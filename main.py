@@ -51,7 +51,7 @@ async def example():
             for cmt in comments:
                 processed_comments.append({'content': cmt['content']['message'], 'like': cmt['like']})
             dic = {'title': video_name, 'stat': video['stat'], 'comments': processed_comments}
-            with open(f'./data/{member_names}/{index}.json', 'w') as json_file:
+            with open(f'./data/{member_name}/{index}.json', 'w') as json_file:
                 json.dump(dic, json_file)
 
 asyncio.run(example())
