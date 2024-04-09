@@ -7,11 +7,9 @@ from tqdm import tqdm
 
 
 settings.proxy = 'http://luowubeigui.tpddns.cn:10086'
-member_names = ["All", "Bangumi", "GuochuangAnime", "Guochuang", "Documentary",
-                    "Douga", "Music", "Dance", "Game", "Knowledge", "Technology",
-                    "Sports", "Car", "Life", "Food", "Animal",
-                    "Fashion", "Ent", "Cinephile", "Movie", "TV", "Variety",
-                    "Original", "Rookie"]
+member_names = ["Douga", "Music", "Dance", "Game", "Knowledge", "Technology",
+                    "Sports", "Life", "Food", "Animal",
+                    "Fashion", "Ent", "Movie", "TV",]
 credential = Credential(sessdata="f2c03ea3%2C1728030024%2C14374%2A41CjBTLiWN3ega4EyPm9XuY7MPP16oS5OlZbz4A4QtxiYg3LLysmNGgiF8HOujsI8sejcSVmszeFdKY19nRlNTZlVvOF9ySUhMUko2TVNwM01HLTVYTDBkMThFYVdfcTNhcGJUc2ltM3h0dHBaNjF5VWF0anNPd2ZQeU4xNUdhSzBPZGM5ZGVvOWlnIIEC", bili_jct="7fda3e6039cd86f614eedc2dd0995276", ac_time_value="f2d0889655b9dca1d826ff09414b6641")
 
 async def example():
@@ -38,7 +36,7 @@ async def example():
             count = 0
             c = await comment.get_comments(video_item['stat']['aid'], comment.CommentResourceType.VIDEO, 1,
                                            credential=credential)
-            for page in tqdm(range(1, min(c["page"]["count"] // 20 - 6, 200)), desc='Processing'):
+            for page in tqdm(range(1, min(c["page"]["count"] // 20 - 1, 26)), desc='Processing'):
                 # 获取评论
                 c = await comment.get_comments(video_item['stat']['aid'], comment.CommentResourceType.VIDEO, page, credential=credential)
                 l = c['replies']
