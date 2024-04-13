@@ -7,12 +7,12 @@ from tqdm import tqdm
 
 
 # settings.proxy = 'http://luowubeigui.tpddns.cn:10086'
-# member_names = ["Douga", "Music", "Dance", "Game", "Knowledge", "Technology",
-#                     "Sports", "Life", "Food", "Animal",
-#                     "Fashion", "Ent", "Movie"]
-member_names = ["All"]
-credential = Credential(sessdata="38259e0c%2C1728457244%2C034de%2A42CjDLfIjnB-qE7TmXtONb8Kju2SRhy8nqBZ4A8-vAFU2P8tquaH8AqZO3L-yc2P5KUdcSVk5LcWFfZnQySFZUZ0tJRkdKYnZYelRCWEJ3QmdsV0NjZlg3UFVpTWpGb2dnemoydk00dUpIb185MTJSX09sMVlURE11MDlOZHJkWG5TZ2FKakxXTXR3IIEC", 
-                        bili_jct="9ea610c9f466855e31f4ceb07d1edbaf", ac_time_value="ad2cc5aa5dc70c2aefb3b83f64c39442")
+member_names = ["Douga", "Music", "Dance", "Game", "Knowledge", "Technology",
+                    "Sports", "Life", "Food", "Animal",
+                    "Fashion", "Ent", "Movie"]
+# member_names = ["All"]
+credential = Credential(sessdata="e288cdb2%2C1728378156%2Cf9589%2A42CjDizR00PHHVW_A3cnnh6IuAEO0_jkOsDXnPBq9Pmq6kERcnbl1LWgEI-f1S6d5qW3MSVm9KR29rWU1yLVpWblljcV9yajZrZHNCUE1BQnZQUWV5MnhjVVB4TkhsdURfUUI3ald5TFhKUURiMVJwN0FrLS1GUTJlbmxlRS1BVUxYZnhjR051X0NnIIEC", 
+                        bili_jct="33611f1d4e079a7bfdac8ebfc2f688a9", ac_time_value="1f26a026e3fa82e604ac408ba69a9042")
 
 async def example():
 
@@ -40,7 +40,7 @@ async def example():
                 count = 0
                 c = await comment.get_comments(video_item['stat']['aid'], comment.CommentResourceType.VIDEO, 1, order=comment.OrderType.LIKE,
                                                 credential=credential)
-                for page in tqdm(range(1, min(c["page"]["count"] // 20 - 1, 26)), desc='Processing'):
+                for page in tqdm(range(1, min(c["page"]["count"] // 20 - 1, 16)), desc='Processing'):
                 # for page in tqdm(range(1, c["page"]["count"] // 20 - 1), desc='Processing'):
                     # print(c["page"])
                     # 获取评论
@@ -48,7 +48,7 @@ async def example():
                         c = await comment.get_comments(video_item['stat']['aid'], comment.CommentResourceType.VIDEO, page, order=comment.OrderType.LIKE, credential=credential)
                     except Exception as e:
                         print(e)
-                        break
+                        break#
                     else:
                         l = c['replies']
                         if l is None:
